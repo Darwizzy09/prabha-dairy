@@ -1,4 +1,4 @@
-const Post = require('../models/Post');
+const Post = require('../models/post');
 
 // 1. Get all posts (For the public Feed page)
 const getPosts = async (req, res) => {
