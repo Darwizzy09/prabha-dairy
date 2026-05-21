@@ -1,5 +1,5 @@
 const axios = require('axios');
-const Order = require('../models/Order'); // Assuming we created this earlier!
+const Order = require('../models/order'); // Assuming we created this earlier!
 
 exports.createCashfreeOrder = async (req, res) => {
   try {
