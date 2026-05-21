@@ -77,7 +77,7 @@ exports.forgotPassword = async (req, res) => {
     await user.save();
 
     // Create the Reset URL for the frontend (Update to Vercel URL later!)
-    const resetUrl = `http://localhost:5173/resetpassword/${resetToken}`; 
+    const resetUrl = `https://prabha-dairy.vercel.app/resetpassword/${resetToken}`; 
 
     // Set up Nodemailer to send via Gmail
     const transporter = nodemailer.createTransport({

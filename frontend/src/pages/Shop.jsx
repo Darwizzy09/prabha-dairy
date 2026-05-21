@@ -149,7 +149,7 @@ export default function Shop() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/products');
+        const response = await axios.get('https://prabha-dairy.vercel.app/api/products');
         // Only show products that are not out of stock (or show them at the bottom)
         const sortedProducts = response.data.sort((a, b) => (a.isOutOfStock === b.isOutOfStock ? 0 : a.isOutOfStock ? 1 : -1));
         setProducts(sortedProducts);

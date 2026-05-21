@@ -21,7 +21,7 @@ export default function Updates() {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/posts');
+        const response = await axios.get('https://prabha-dairy.vercel.app/api/posts');
         setPosts(response.data);
       } catch (error) {
         toast.error("Failed to load updates");
@@ -41,7 +41,7 @@ export default function Updates() {
     setLikedPosts(new Set([...likedPosts, postId]));
 
     try {
-      await axios.put(`http://localhost:5000/api/posts/${postId}/like`);
+      await axios.put(`https://prabha-dairy.vercel.app/api/posts/${postId}/like`);
     } catch (error) {
       console.error("Failed to like post:", error);
     }

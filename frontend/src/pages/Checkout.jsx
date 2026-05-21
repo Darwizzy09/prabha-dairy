@@ -106,7 +106,7 @@ export default function Checkout() {
 
     try {
       if (formData.paymentMethod === 'Cash on Delivery') {
-        await axios.post('http://localhost:5000/api/orders', orderPayload);
+        await axios.post('https://prabha-dairy.vercel.app/api/orders', orderPayload);
         
         sessionStorage.setItem('recentOrder', JSON.stringify(orderPayload));
         clearCart();
@@ -123,10 +123,10 @@ export default function Checkout() {
 
         const toastId = toast.loading("Connecting securely to Cashfree...");
         
-        await axios.post('http://localhost:5000/api/orders', orderPayload);
+        await axios.post('https://prabha-dairy.vercel.app/api/orders', orderPayload);
 
         const config = { headers: { Authorization: `Bearer ${user.token}` } };
-        const response = await axios.post('http://localhost:5000/api/payment/create-order', {
+        const response = await axios.post('https://prabha-dairy.vercel.app/api/payment/create-order', {
           orderAmount: totalAmount,
           customerName: formData.customerName,
           customerEmail: formData.customerEmail || "guest@prabhadairy.com",

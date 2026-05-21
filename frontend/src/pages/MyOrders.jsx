@@ -13,7 +13,7 @@ export default function MyOrders() {
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/orders');
+        const response = await axios.get('https://prabha-dairy.vercel.app/api/orders');
         const userOrders = response.data.filter(
           (order) => order.customerEmail === user?.email
         );

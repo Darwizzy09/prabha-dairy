@@ -11,7 +11,7 @@ export default function Orders() {
 
   const fetchOrders = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/orders');
+      const response = await axios.get('https://prabha-dairy.vercel.app/api/orders');
       // Sort newest first using MongoDB _id
       setOrders(response.data.sort((a, b) => b._id.localeCompare(a._id)));
     } catch (error) {
@@ -30,7 +30,7 @@ export default function Orders() {
     setOrders(orders.map(o => o._id === orderId ? { ...o, status: newStatus } : o));
     
     try {
-      await axios.put(`http://localhost:5000/api/orders/${orderId}/status`, { status: newStatus });
+      await axios.put(`https://prabha-dairy.vercel.app/api/orders/${orderId}/status`, { status: newStatus });
       toast.success(`Order marked as ${newStatus}`);
     } catch (error) {
       toast.error("Failed to update status");

@@ -22,7 +22,7 @@ const app = express();
 
 // 👉 CORS MUST BE THE VERY FIRST THING
 app.use(cors({
-  origin: ['http://localhost:5173', 'http://localhost:3000', 'https://www.prabhadairy.com'], 
+  origin: ['http://localhost:5173', 'http://localhost:3000', 'https://prabha-dairy.vercel.app'], 
   credentials: true
 }));
 

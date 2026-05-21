@@ -20,7 +20,7 @@ exports.createCashfreeOrder = async (req, res) => {
         customer_phone: customerPhone || "9999999999"
       },
       order_meta: {
-        return_url: "http://localhost:5173/payment-success?order_id={order_id}" // We will build this page next!
+        return_url: "https://prabha-dairy.vercel.app/payment-success?order_id={order_id}" // We will build this page next!
       }
     };
 

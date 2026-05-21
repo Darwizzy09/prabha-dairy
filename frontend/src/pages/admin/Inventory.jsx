@@ -30,7 +30,7 @@ export default function Inventory() {
 
   const fetchProducts = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/products');
+      const response = await axios.get('https://prabha-dairy.vercel.app/api/products');
       setProducts(response.data);
     } catch (error) {
       toast.error("Failed to connect to database");
@@ -58,7 +58,7 @@ export default function Inventory() {
     try {
       // 👉 Attached Token Here
       const config = { headers: { Authorization: `Bearer ${user.token}` } };
-      await axios.delete(`http://localhost:5000/api/products/${productToDelete}`, config);
+      await axios.delete(`https://prabha-dairy.vercel.app/api/products/${productToDelete}`, config);
       setProducts(products.filter(p => p._id !== productToDelete));
       toast.success("Product deleted successfully", { style: { borderRadius: '10px', background: '#333', color: '#fff' } });
     } catch (error) {
@@ -75,7 +75,7 @@ export default function Inventory() {
     try {
       // 👉 Attached Token Here
       const config = { headers: { Authorization: `Bearer ${user.token}` } };
-      await axios.put(`http://localhost:5000/api/products/${id}`, { isOutOfStock: newStatus }, config);
+      await axios.put(`https://prabha-dairy.vercel.app/api/products/${id}`, { isOutOfStock: newStatus }, config);
       toast.success(newStatus ? 'Marked as Out of Stock' : 'Product is back In Stock!');
     } catch (error) {
       toast.error("Failed to update status");
@@ -138,11 +138,11 @@ export default function Inventory() {
       const config = { headers: { Authorization: `Bearer ${user.token}` } };
 
       if (editingId) {
-        const response = await axios.put(`http://localhost:5000/api/products/${editingId}`, submitData, config);
+        const response = await axios.put(`https://prabha-dairy.vercel.app/api/products/${editingId}`, submitData, config);
         setProducts(products.map(p => p._id === editingId ? response.data : p));
         toast.success("Product updated!");
       } else {
-        const response = await axios.post('http://localhost:5000/api/products', submitData, config);
+        const response = await axios.post('https://prabha-dairy.vercel.app/api/products', submitData, config);
         setProducts([response.data, ...products]);
         toast.success("Product added!");
       }

@@ -14,7 +14,7 @@ export default function ForgotPassword() {
     setIsLoading(true);
 
     try {
-      await axios.post('http://localhost:5000/api/auth/forgotpassword', { email });
+      await axios.post('https://prabha-dairy.vercel.app/api/auth/forgotpassword', { email });
       setIsSent(true);
       toast.success('Reset link sent to your email!');
     } catch (error) {

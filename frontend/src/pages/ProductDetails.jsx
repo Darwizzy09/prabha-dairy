@@ -26,7 +26,7 @@ export default function ProductDetails() {
 
   const fetchProduct = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/products');
+      const response = await axios.get('https://prabha-dairy.vercel.app/api/products');
       const foundProduct = response.data.find(p => p._id === id);
       setProduct(foundProduct);
       setLoading(false);
@@ -57,7 +57,7 @@ export default function ProductDetails() {
     setReviewLoading(true);
     try {
       const config = { headers: { Authorization: `Bearer ${user.token}` } };
-      await axios.post(`http://localhost:5000/api/products/${id}/reviews`, { rating, comment }, config);
+      await axios.post(`https://prabha-dairy.vercel.app/api/products/${id}/reviews`, { rating, comment }, config);
 
       toast.success("Review submitted successfully!");
       setComment('');

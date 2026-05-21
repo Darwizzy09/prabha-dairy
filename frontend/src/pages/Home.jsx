@@ -141,7 +141,7 @@ export default function Home() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/products');
+        const response = await axios.get('https://prabha-dairy.vercel.app/api/products');
         setProducts(response.data);
         setLoading(false);
       } catch (error) {

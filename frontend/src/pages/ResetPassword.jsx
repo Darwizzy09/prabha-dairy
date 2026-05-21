@@ -26,7 +26,7 @@ export default function ResetPassword() {
     setIsLoading(true);
 
     try {
-      await axios.put(`http://localhost:5000/api/auth/resetpassword/${token}`, { password });
+      await axios.put(`https://prabha-dairy.vercel.app/api/auth/resetpassword/${token}`, { password });
       toast.success('Password reset successful! You can now log in.');
       navigate('/login'); // 👉 Send them straight to login
     } catch (error) {

@@ -13,8 +13,8 @@ export default function Analytics() {
       try {
         // Fetch both endpoints at the same time for speed!
         const [ordersRes, productsRes] = await Promise.all([
-          axios.get('http://localhost:5000/api/orders'),
-          axios.get('http://localhost:5000/api/products')
+          axios.get('https://prabha-dairy.vercel.app/api/orders'),
+          axios.get('https://prabha-dairy.vercel.app/api/products')
         ]);
         setOrders(ordersRes.data);
         setProducts(productsRes.data);

@@ -39,7 +39,7 @@ export default function AdminPosts() {
     formData.append('caption', caption);
 
     try {
-      await axios.post('http://localhost:5000/api/posts', formData, {
+      await axios.post('https://prabha-dairy.vercel.app/api/posts', formData, {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
       
