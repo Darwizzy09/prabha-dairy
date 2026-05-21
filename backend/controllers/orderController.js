@@ -1,4 +1,4 @@
-const Order = require('../models/Order');
+const Order = require('../models/order');
 const sendEmail = require('../utils/sendEmail'); // 👉 Make sure this file exists!
 
 // 1. CREATE: Save a new order (Used on the Checkout page)
