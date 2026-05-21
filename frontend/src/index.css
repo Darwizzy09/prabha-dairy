@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Force light mode and our cream background */
+:root {
+  color-scheme: light;
+}
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  background-color: #FDFBF7; /* Our milk-cream background */
+  color: #1f2937; /* Dark gray text */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Remove Vite's default purple link colors */
+a {
+  text-decoration: none;
+  color: inherit;
+}
