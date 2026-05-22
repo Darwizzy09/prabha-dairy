@@ -2,7 +2,8 @@ import { useState, useContext, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import { useCart } from '../context/CartContext';
-import { ShoppingCart, Search, User as UserIcon, X, LogOut, ShieldCheck, Menu, Package, Sparkles, Info } from 'lucide-react';
+// 👉 Added the Star icon here!
+import { ShoppingCart, Search, User as UserIcon, X, LogOut, ShieldCheck, Menu, Package, Sparkles, Info, Star } from 'lucide-react';
 
 export default function Navbar() {
   const { user, logout } = useContext(AuthContext);
@@ -41,21 +42,17 @@ export default function Navbar() {
 
   return (
     <>
-      {/* FIXED: Removed backdrop-blur and transparency, made it solid bg-white */}
       <nav className="bg-white shadow-sm border-b border-gray-100 sticky top-0 z-[100]">
-        {/* FIXED: Reduced padding (py-1.5 sm:py-2) to compress height */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-1.5 sm:py-2 flex justify-between items-center">
 
           {!isSearchOpen && (
             <Link to="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity duration-300">
-              {/* FIXED: Compressed logo from h-28 to h-16/h-20 */}
               <img src="/logo1.jpg" alt="Prabha Dairy Logo" className="h-16 sm:h-20 w-auto object-contain origin-left" />
             </Link>
           )}
 
           <div className={`flex items-center gap-2 sm:gap-4 ${isSearchOpen ? 'w-full' : ''}`}>
 
-            {/* NEW: Prabha's Journey Link (Desktop Only) */}
             {!isSearchOpen && (
               <Link to="/about" className="hidden md:block text-gray-700 hover:text-brand font-black transition-all duration-300 mr-2">
                 Prabha's Journey
@@ -185,7 +182,6 @@ export default function Navbar() {
             <Sparkles size={20} className="text-gray-500 group-hover:text-brand transition-colors" /> Community Updates
           </Link>
 
-          {/* NEW: Prabha's Journey Link (Mobile Menu) */}
           <Link
             to="/about"
             onClick={() => setIsMobileMenuOpen(false)}
@@ -194,6 +190,17 @@ export default function Navbar() {
             <Info size={20} className="text-gray-500 group-hover:text-brand transition-colors" /> Prabha's Journey
           </Link>
           
+          {/* 👉 NEW: Rate Us Link */}
+          <a
+            href="https://www.google.com/maps/place/Prabha+Dairy/@19.902817,75.3550018,17z/data=!3m1!4b1!4m6!3m5!1s0x3bdba2b23ac90e73:0x5738eae0dfdebe13!8m2!3d19.902817!4d75.3550018!16s%2Fg%2F1hm304jy3?entry=ttu&g_ep=EgoyMDI2MDUxNy4wIKXMDSoASAFQAw%3D%3D"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="px-4 py-3.5 bg-white rounded-xl font-bold text-gray-700 shadow-sm border border-gray-100 hover:border-brand/50 hover:text-brand hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 flex items-center gap-3 group"
+          >
+            <Star size={20} className="text-gray-500 group-hover:text-yellow-500 transition-colors" /> Rate Us
+          </a>
+
           {/* ORDERS BUTTON (Mobile Menu) */}
           {user && (
             <Link
