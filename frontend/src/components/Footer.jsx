@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-// 👉 Removed Facebook and Instagram from the import!
-import { Mail, Phone, MapPin, Store } from 'lucide-react';
+// 👉 Added Linkedin to the imports!
+import { Mail, Phone, MapPin, Store, Linkedin } from 'lucide-react';
 
 // 👉 Added the raw SVG icons since Lucide removed them
 const FacebookIcon = ({ size = 20 }) => (
@@ -119,6 +119,29 @@ export default function Footer() {
             <span className="flex items-center gap-2"><Phone size={16} /> +91 92846 25368</span>
             <span className="flex items-center gap-2"><Mail size={16} /> prabhadairy.1992@gmail.com</span>
           </div>
+        </div>
+
+        {/* 👉 NEW: The Creator Credits Banner */}
+        <div className="mt-6 flex flex-col sm:flex-row justify-center items-center gap-3 sm:gap-6 text-xs text-gray-400">
+          
+          {/* Rohit's Credit */}
+          <div className="flex items-center gap-1.5">
+            Website created by <span className="font-bold text-gray-500">Rohit Salunke</span>
+            <a href="https://www.linkedin.com/in/rohit-salunke-0202023b2/" target="_blank" rel="noreferrer" className="text-gray-400 hover:text-[#0A66C2] hover:-translate-y-0.5 transition-all duration-300" title="Rohit Salunke on LinkedIn">
+              <Linkedin size={14} />
+            </a>
+          </div>
+
+          <span className="hidden sm:block text-gray-300">•</span>
+
+          {/* Purvaja's Credit */}
+          <div className="flex items-center gap-1.5">
+            Logo created by <span className="font-bold text-gray-500">Purvaja Choube</span>
+            <a href="https://www.linkedin.com/in/purvaja-choube-18b262250/" target="_blank" rel="noreferrer" className="text-gray-400 hover:text-[#0A66C2] hover:-translate-y-0.5 transition-all duration-300" title="Purvaja Choube on LinkedIn">
+              <Linkedin size={14} />
+            </a>
+          </div>
+
         </div>
 
       </div>

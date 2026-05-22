@@ -66,7 +66,7 @@ export default function About() {
               <div className="bg-gray-50 rounded-2xl p-6 text-center border border-gray-100 hover:border-brand/30 transition-colors">
                 <Home className="mx-auto text-brand mb-3" size={28} />
                 <p className="text-2xl font-black text-gray-900">10,000+</p>
-                <p className="text-sm font-bold text-gray-500 mt-1">Homes Served</p>
+                <p className="text-sm font-bold text-gray-500 mt-1">Homes Served monthly</p>
               </div>
               <div className="bg-gray-50 rounded-2xl p-6 text-center border border-gray-100 hover:border-brand/30 transition-colors md:col-span-1 col-span-2">
                 <Package className="mx-auto text-brand mb-3" size={28} />
@@ -158,7 +158,7 @@ export default function About() {
               </div>
               <div className="prose text-gray-600 leading-relaxed space-y-4">
                 <p>
-                  The Man of the hour, Sir Nilesh ji, is the Co-Founder of The Prabha Dairy. He has over two decades of experience in food production and joined Sir Rajesh ji when he was in the 11th standard. After his arrival, the business got a boost as the manpower increased, and he has been the foundation in our production management, and most of our products are designed and executed by him. He is working hard to make our production better, and he is always in R&D to make our products better and of better quality. No matter the situation, making sure the customers are given the best and are satisfied is their main concern. 
+                  The Man of the hour, Sir Nilesh ji, is the Co-Founder of The Prabha Dairy. He has over two decades of experience in food production and joined Sir Rajesh ji when he was in high school. After his arrival, the business got a boost as the manpower increased, and he has been the foundation in our production management, and most of our products are designed and executed by him. He is working hard to make our production better, and he is always in R&D to make our products better and of better quality. No matter the situation, making sure the customers are given the best and are satisfied is their main concern. 
                 </p>
                 <p className="font-bold text-gray-900 border-l-4 border-brand pl-4 my-6 py-2">
                   Sir Nilesh ji believes in "Seva Parmo Dharma", that is, serving is the highest duty, and he does that with his extreme hard work and dedication towards his work.
