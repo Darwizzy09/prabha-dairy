@@ -8,7 +8,7 @@ const getProducts = async (req, res) => {
     if (mongoose.connection.readyState !== 1) {
       console.log("Wake up call! Forcing fresh MongoDB connection...");
       // Replace YOUR_NEW_PASSWORD below with your actual password
-      await mongoose.connect("mongodb+srv://rohitliverpool777_db_user:9eKMkfnXeifQ46an@cluster001.el8mnex.mongodb.net/PrabhaDairy?appName=Cluster001", {
+      await mongoose.connect(process.env.MONGO_URI, {
         serverSelectionTimeoutMS: 5000 // Only wait 5 seconds instead of 10
       });
     }
