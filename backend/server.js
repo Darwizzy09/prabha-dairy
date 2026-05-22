@@ -57,7 +57,7 @@ app.use('/api/auth/register', loginLimiter);
 
 
 // 4. --- DATABASE CONNECTION ---
-mongoose.connect(process.env.MONGO_URI)
+mongoose.connect("mongodb+srv://rohitliverpool777_db_user:TkuarLbAaCXS7ddd@cluster001.el8mnex.mongodb.net/?appName=Cluster001/Prabhadairy")
   .then(() => console.log('MongoDB Connected ✅'))
   .catch(err => console.error('MongoDB Connection Error ❌:', err));
 
