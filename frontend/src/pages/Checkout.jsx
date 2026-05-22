@@ -135,7 +135,7 @@ export default function Checkout() {
 
         const { payment_session_id } = response.data;
         
-        const cashfree = await load({ mode: "sandbox" }); 
+        const cashfree = await load({ mode: "production" }); 
         toast.dismiss(toastId);
 
         let checkoutOptions = {

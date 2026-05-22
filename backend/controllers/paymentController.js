@@ -26,7 +26,7 @@ exports.createCashfreeOrder = async (req, res) => {
 
     // 3. Send request to Cashfree (Using Sandbox/Test environment URL)
     // NOTE: Change 'sandbox' to 'api' when going live!
-    const response = await axios.post('https://sandbox.cashfree.com/pg/orders', requestData, {
+    const response = await axios.post('https://api.cashfree.com/pg/orders', requestData, {
       headers: {
         'x-client-id': process.env.CASHFREE_APP_ID,
         'x-client-secret': process.env.CASHFREE_SECRET_KEY,
