@@ -4,6 +4,23 @@ import {
   Heart, Shield, Award, Crown, Star 
 } from 'lucide-react';
 
+// 👉 Added Custom SVGs for Social Links
+const InstagramIcon = ({ size = 20 }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+  </svg>
+);
+
+const LinkedinIcon = ({ size = 20 }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+    <rect x="2" y="9" width="4" height="12"></rect>
+    <circle cx="4" cy="4" r="2"></circle>
+  </svg>
+);
+
 export default function About() {
   return (
     <div className="min-h-screen bg-[#FDFBF7] pt-20 pb-16 px-4 sm:px-6 lg:px-8 animate-in fade-in duration-700">
@@ -102,10 +119,36 @@ export default function About() {
           </div>
         </div>
 
+        {/* 👉 UPDATED: The COO Card */}
         <div className="text-center mb-16">
-          <div className="inline-block bg-white px-8 py-4 rounded-2xl border border-gray-100 shadow-sm mb-8">
-             <h4 className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-1">Our Current COO</h4>
-             <p className="text-xl font-black text-gray-900">Mr. Soham Rajesh Sawalkar</p>
+          <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 md:p-8 text-center max-w-sm mx-auto transform transition-all duration-300 hover:-translate-y-1 hover:shadow-md mb-8">
+            <p className="text-sm font-bold text-gray-400 tracking-widest uppercase mb-2">Our Current COO</p>
+            <h3 className="text-xl md:text-2xl font-black text-brand-dark mb-5">Mr. Soham Rajesh Sawalkar</h3>
+
+            {/* Social Links Row */}
+            <div className="flex items-center justify-center gap-4">
+              {/* Instagram */}
+              <a 
+                href="https://www.instagram.com/and_soham?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" 
+                target="_blank" 
+                rel="noreferrer" 
+                className="w-10 h-10 bg-gray-50 text-gray-400 rounded-full flex items-center justify-center hover:bg-brand hover:text-white transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-0.5"
+                title="Soham on Instagram"
+              >
+                <InstagramIcon size={18} />
+              </a>
+
+              {/* LinkedIn */}
+              <a 
+                href="https://www.linkedin.com/in/soham-sanjivani-rajesh-sawalkar-jain-52833a29a/" 
+                target="_blank" 
+                rel="noreferrer" 
+                className="w-10 h-10 bg-gray-50 text-gray-400 rounded-full flex items-center justify-center hover:bg-[#0A66C2] hover:text-white transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-0.5"
+                title="Soham on LinkedIn"
+              >
+                <LinkedinIcon size={18} />
+              </a>
+            </div>
           </div>
         </div>
 
