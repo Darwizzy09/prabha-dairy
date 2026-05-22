@@ -64,10 +64,8 @@ export default function Contact() {
               <div>
                 <p className="text-lg font-bold text-gray-900">Working Hours</p>
                 <p className="text-gray-500 mt-1 leading-relaxed">
-                  Mon - Sat: 
-                  6:00 AM - 12:30 PM,
-                  4:30 PM - 9:00 PM<br />
-                  Sunday: 6:00 AM - 1:00 PM
+                  Everyday: 
+                  7:00 AM - 9:00 PM
                 </p>
               </div>
             </div>

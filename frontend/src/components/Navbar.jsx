@@ -2,8 +2,7 @@ import { useState, useContext, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import { useCart } from '../context/CartContext';
-// 👉 Added Sparkles to the import
-import { ShoppingCart, Search, User as UserIcon, X, LogOut, ShieldCheck, Menu, Package, Sparkles } from 'lucide-react';
+import { ShoppingCart, Search, User as UserIcon, X, LogOut, ShieldCheck, Menu, Package, Sparkles, Info } from 'lucide-react';
 
 export default function Navbar() {
   const { user, logout } = useContext(AuthContext);
@@ -42,17 +41,26 @@ export default function Navbar() {
 
   return (
     <>
-      {/* FIXED THE CLICK ISSUE: Changed relative to sticky, z-[100] forces it over all other elements */}
-      <nav className="bg-white/90 backdrop-blur-md shadow-sm border-b border-gray-100 sticky top-0 z-[100]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 sm:py-3 flex justify-between items-center">
+      {/* FIXED: Removed backdrop-blur and transparency, made it solid bg-white */}
+      <nav className="bg-white shadow-sm border-b border-gray-100 sticky top-0 z-[100]">
+        {/* FIXED: Reduced padding (py-1.5 sm:py-2) to compress height */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-1.5 sm:py-2 flex justify-between items-center">
 
           {!isSearchOpen && (
             <Link to="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity duration-300">
-              <img src="/logo1.jpg" alt="Prabha Dairy Logo" className="h-24 sm:h-28 w-auto object-contain origin-left" />
+              {/* FIXED: Compressed logo from h-28 to h-16/h-20 */}
+              <img src="/logo1.jpg" alt="Prabha Dairy Logo" className="h-16 sm:h-20 w-auto object-contain origin-left" />
             </Link>
           )}
 
           <div className={`flex items-center gap-2 sm:gap-4 ${isSearchOpen ? 'w-full' : ''}`}>
+
+            {/* NEW: Prabha's Journey Link (Desktop Only) */}
+            {!isSearchOpen && (
+              <Link to="/about" className="hidden md:block text-gray-700 hover:text-brand font-black transition-all duration-300 mr-2">
+                Prabha's Journey
+              </Link>
+            )}
 
             {/* SEARCH BAR SECTION */}
             <div className={`relative flex items-center transition-all duration-300 ${isSearchOpen ? 'flex-1' : 'w-auto'}`}>
@@ -62,7 +70,7 @@ export default function Navbar() {
                     autoFocus
                     type="text"
                     placeholder="Search for milk, paneer..."
-                    className="w-full bg-[#FDFBF7] border border-brand/20 rounded-full py-2.5 px-6 focus:outline-none focus:ring-2 focus:ring-brand/30 transition-all duration-300"
+                    className="w-full bg-[#FDFBF7] border border-brand/20 rounded-full py-2 px-6 focus:outline-none focus:ring-2 focus:ring-brand/30 transition-all duration-300"
                     value={searchQuery}
                     onChange={handleLiveSearch}
                   />
@@ -90,7 +98,7 @@ export default function Navbar() {
 
             {!isSearchOpen && (
               <>
-                {/* 👉 NEW: COMMUNITY BUTTON (Desktop Only) */}
+                {/* COMMUNITY BUTTON (Desktop Only) */}
                 <Link to="/updates" title="Community" className="text-gray-600 hover:text-brand transition-all duration-300 relative p-2.5 hover:bg-brand-light rounded-full hover:scale-110 active:scale-95 hidden sm:block">
                   <Sparkles size={22} />
                 </Link>
@@ -154,7 +162,7 @@ export default function Navbar() {
           {user && (
             <div className="bg-white p-4 rounded-2xl shadow-sm border border-brand/10 mb-2 transform transition-all duration-300 hover:shadow-md hover:-translate-y-1">
               <p className="text-xs text-gray-400 uppercase font-bold tracking-wider mb-1">
-                {user.email === ADMIN_EMAILS ? "Admin" : "Member"}
+                {ADMIN_EMAILS.includes(user.email) ? "Admin" : "Member"}
               </p>
               <p className="text-lg font-black text-brand-dark truncate">{user.name}</p>
               <p className="text-sm text-gray-500 truncate">{user.email}</p>
@@ -169,7 +177,6 @@ export default function Navbar() {
             <span className="text-xl">🛒</span> Shop Dairy
           </Link>
 
-          {/* 👉 FIXED: Styled Community Button for Mobile */}
           <Link
             to="/updates"
             onClick={() => setIsMobileMenuOpen(false)}
@@ -178,6 +185,15 @@ export default function Navbar() {
             <Sparkles size={20} className="text-gray-500 group-hover:text-brand transition-colors" /> Community Updates
           </Link>
 
+          {/* NEW: Prabha's Journey Link (Mobile Menu) */}
+          <Link
+            to="/about"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="px-4 py-3.5 bg-white rounded-xl font-bold text-gray-700 shadow-sm border border-gray-100 hover:border-brand/50 hover:text-brand hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 flex items-center gap-3 group"
+          >
+            <Info size={20} className="text-gray-500 group-hover:text-brand transition-colors" /> Prabha's Journey
+          </Link>
+          
           {/* ORDERS BUTTON (Mobile Menu) */}
           {user && (
             <Link
