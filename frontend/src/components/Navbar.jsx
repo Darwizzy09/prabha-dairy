@@ -154,7 +154,7 @@ export default function Navbar() {
           {user && (
             <div className="bg-white p-4 rounded-2xl shadow-sm border border-brand/10 mb-2 transform transition-all duration-300 hover:shadow-md hover:-translate-y-1">
               <p className="text-xs text-gray-400 uppercase font-bold tracking-wider mb-1">
-                {user.email === ADMIN_EMAIL ? "Admin" : "Member"}
+                {user.email === ADMIN_EMAILS ? "Admin" : "Member"}
               </p>
               <p className="text-lg font-black text-brand-dark truncate">{user.name}</p>
               <p className="text-sm text-gray-500 truncate">{user.email}</p>
