@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 // 👉 Removed Facebook and Instagram from the import!
-import { Mail, Phone, MapPin } from 'lucide-react';
+import { Mail, Phone, MapPin, Facebook, Store } from 'lucide-react';
 
 // 👉 Added the raw SVG icons since Lucide removed them
 const FacebookIcon = ({ size = 20 }) => (
@@ -34,20 +34,54 @@ export default function Footer() {
             <p className="text-gray-500 mb-6 max-w-sm leading-relaxed">
               Delivering 100% pure, farm-fresh milk, ghee, and dairy products straight from our farms to your doorstep.
             </p>
-            <div className="flex gap-4">
+            <div className="flex flex-wrap gap-4">
               <a href="https://www.instagram.com/prabha_dairy?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noreferrer" className="w-10 h-10 bg-gray-50 text-gray-400 rounded-full flex items-center justify-center hover:bg-brand hover:text-white transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-1">
                 {/* 👉 Using the custom SVG */}
                 <InstagramIcon size={20} />
               </a>
+              
               {/* 👉 Custom JustDial Icon */}
               <a
                 href="https://jsdl.in/DT-99YZWZKM"
                 target="_blank"
                 rel="noreferrer"
-                className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-50 text-gray-400 hover:bg-[#FF7A00] hover:text-white transition-all duration-300 shadow-sm hover:shadow-md"
+                className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-50 text-gray-400 hover:bg-[#FF7A00] hover:text-white transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-1"
                 aria-label="JustDial"
               >
                 <span className="font-black text-lg tracking-tighter leading-none mb-0.5">jd</span>
+              </a>
+
+              {/* 👉 Custom Facebook Icon */}
+              <a
+                href="https://www.facebook.com/profile.php?id=61562014730192&utm_source=ig&utm_medium=social&utm_content=link_in_bio#"
+                target="_blank"
+                rel="noreferrer"
+                className="w-10 h-10 bg-gray-50 text-gray-400 rounded-full flex items-center justify-center hover:bg-[#1877F2] hover:text-white transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-1"
+                aria-label="Facebook"
+              >
+                <FacebookIcon size={20} />
+              </a>
+
+              {/* 👉 Magicpin Icon */}
+              <a
+                href="https://magicpin.in/Aurangabad/Cidco/Grocery/Prabha-Dairy/store/a396a1?srsltid=AfmBOorWK6Kbm1B0k5m6k_s6LgwugTrcGME8WPWsNIsr7B28DfSf-xwG"
+                target="_blank"
+                rel="noreferrer"
+                className="w-10 h-10 bg-gray-50 text-gray-400 rounded-full flex items-center justify-center hover:bg-red-500 hover:text-white transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-1"
+                aria-label="Magicpin"
+              >
+                <Store size={20} />
+              </a>
+
+              {/* 👉 EzySambhajinagar Icon */}
+              <a
+                href="https://ezysambhajinagar.com/shops-services/prabha-dairy/"
+                target="_blank"
+                rel="noreferrer"
+                className="w-10 h-10 bg-gray-50 text-gray-400 rounded-full flex items-center justify-center hover:bg-green-600 hover:text-white transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-1"
+                aria-label="EzySambhajinagar"
+              >
+                <MapPin size={20} />
               </a>
             </div>
           </div>

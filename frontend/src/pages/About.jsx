@@ -43,7 +43,7 @@ export default function About() {
         <div className="mb-16">
           <div className="bg-white rounded-[2.5rem] shadow-sm border border-gray-100 p-8 md:p-12">
             <p className="text-gray-600 text-lg leading-relaxed mb-10">
-              Currently, we are a family of more than 30 members, and proud to say that we are expanding rapidly since our manpower has increased. We are currently selling our products throughout Chhatrapati Sambhajinagar. We have more than 300 live counters where our products are sold, and a self-owned retail store at M2 Road, TV Centre, Chhatrapati Sambhajinagar, Maharashtra, India. Our Daily Milk collection reaches up to 3000 ltr, and we are proud to say our products are consumed in over 3000+ homes where they are consumed, and our Ghee is used in the medical field as well. We currently manufacture more than 50 products.
+              Currently, we are a family of more than 30 members, and proud to say that we are expanding rapidly since our manpower has increased. We are currently selling our products throughout Chhatrapati Sambhajinagar. We have more than 300 live counters where our products are sold, and a self-owned retail store at M2 Road, TV Centre, Chhatrapati Sambhajinagar, Maharashtra, India. Our Daily Milk collection reaches up to 3000 ltr, and we are proud to say our products are consumed in over 10000+ homes where they are consumed, and our Ghee is used in the medical field as well. We currently manufacture more than 50 products.
             </p>
             
             {/* Visual Stats Grid based on the text */}
@@ -65,7 +65,7 @@ export default function About() {
               </div>
               <div className="bg-gray-50 rounded-2xl p-6 text-center border border-gray-100 hover:border-brand/30 transition-colors">
                 <Home className="mx-auto text-brand mb-3" size={28} />
-                <p className="text-2xl font-black text-gray-900">3000+</p>
+                <p className="text-2xl font-black text-gray-900">10,000+</p>
                 <p className="text-sm font-bold text-gray-500 mt-1">Homes Served</p>
               </div>
               <div className="bg-gray-50 rounded-2xl p-6 text-center border border-gray-100 hover:border-brand/30 transition-colors md:col-span-1 col-span-2">
