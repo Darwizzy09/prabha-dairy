@@ -1,13 +1,23 @@
+const mongoose = require('mongoose'); // 👉 NEW: Required to check the connection status
 const Product = require('../models/Product');
 
 // GET: Fetch all products
 const getProducts = async (req, res) => {
   try {
+    // 👉 THE NUCLEAR FIX: If Vercel dropped the connection, force it open right now
+    if (mongoose.connection.readyState !== 1) {
+      console.log("Wake up call! Forcing fresh MongoDB connection...");
+      // Replace YOUR_NEW_PASSWORD below with your actual password
+      await mongoose.connect("mongodb+srv://rohitliverpool777_db_user:9eKMkfnXeifQ46an@cluster001.el8mnex.mongodb.net/PrabhaDairy?appName=Cluster001", {
+        serverSelectionTimeoutMS: 5000 // Only wait 5 seconds instead of 10
+      });
+    }
+
     const products = await Product.find().sort({ createdAt: -1 }); // Newest first
     res.status(200).json(products);
   } catch (error) {
-    console.log("Error fetching products:", error);
-    res.status(500).json({ message: "Server error fetching products" });
+    console.error("NUCLEAR FIX ERROR:", error);
+    res.status(500).json({ message: "Server error fetching products", exactError: error.message });
   }
 };
 
@@ -24,7 +34,7 @@ const createProduct = async (req, res) => {
       }
     }
 
-    // 2. Build a brand new object manually (Do NOT pass req.body directly to Product!)
+    // 2. Build a brand new object manually
     const productData = {
       name: req.body.name,
       category: req.body.category,
@@ -81,7 +91,7 @@ const updateProduct = async (req, res) => {
     const updatedProduct = await Product.findByIdAndUpdate(
       req.params.id,
       updateData,
-      { new: true } // Returns the updated document
+      { new: true } 
     );
 
     if (!updatedProduct) {
@@ -106,7 +116,6 @@ const deleteProduct = async (req, res) => {
   }
 };
 
-// 👉 FIXED: Changed from 'exports.createProductReview' to 'const createProductReview'
 const createProductReview = async (req, res) => {
   try {
     const { rating, comment } = req.body;
@@ -143,7 +152,6 @@ const createProductReview = async (req, res) => {
   }
 };
 
-// 👉 FIXED: Cleaned up the bottom export line so it exports everything perfectly
 module.exports = {
   getProducts,
   createProduct,
