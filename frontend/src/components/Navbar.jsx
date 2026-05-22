@@ -15,7 +15,7 @@ export default function Navbar() {
   const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
 
   const navigate = useNavigate();
-  const ADMIN_EMAIL = [ "rohitliverpool777@gmail.com", "prabhadairy.1992@gmail.com", "sawalkarsoham88@gmail.com"];
+  const ADMIN_EMAILS = ["rohitliverpool777@gmail.com", "prabhadairy.1992@gmail.com", "sawalkarsoham88@gmail.com"];
 
   useEffect(() => {
     if (isMobileMenuOpen) {
@@ -197,7 +197,7 @@ export default function Navbar() {
             <ShoppingCart size={20} className="text-gray-500 group-hover:text-brand transition-colors" /> View Cart
           </Link>
 
-          {user && user.email === ADMIN_EMAIL && (
+          {user && ADMIN_EMAILS.includes(user.email) && (
             <Link
               to="/admin/inventory"
               onClick={() => setIsMobileMenuOpen(false)}
