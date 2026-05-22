@@ -55,9 +55,10 @@ const loginLimiter = rateLimit({
 app.use('/api/auth/login', loginLimiter);
 app.use('/api/auth/register', loginLimiter);
 
-
+console.log("=== VERCEL DIAGNOSTIC CHECK ===");
+console.log("Is MONGO_URI present?", process.env.MONGO_URI ? "YES ✅" : "NO ❌");
 // 4. --- DATABASE CONNECTION ---
-mongoose.connect("mongodb+srv://rohitliverpool777_db_user:TkuarLbAaCXS7ddd@cluster001.el8mnex.mongodb.net/?appName=Cluster001/Prabhadairy")
+mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('MongoDB Connected ✅'))
   .catch(err => console.error('MongoDB Connection Error ❌:', err));
 
