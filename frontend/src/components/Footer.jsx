@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 // 👉 Removed Facebook and Instagram from the import!
-import { Mail, Phone, MapPin, Facebook, Store } from 'lucide-react';
+import { Mail, Phone, MapPin, Store } from 'lucide-react';
 
 // 👉 Added the raw SVG icons since Lucide removed them
 const FacebookIcon = ({ size = 20 }) => (
