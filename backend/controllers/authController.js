@@ -3,23 +3,19 @@ const jwt = require('jsonwebtoken');
 const crypto = require('crypto');
 const nodemailer = require('nodemailer');
 
-// Helper function to create the Digital ID (Token)
 const generateToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: '30d' });
 };
 
-// 1. SIGNUP LOGIC (Create Account)
 exports.register = async (req, res) => {
   try {
     const { name, email, password } = req.body;
 
-    // Check if user already has an account
     const userExists = await User.findOne({ email });
     if (userExists) {
       return res.status(400).json({ message: 'User already exists with this email' });
     }
 
-    // Create the new user in MongoDB
     const user = await User.create({ name, email, password });
 
     if (user) {
@@ -31,20 +27,17 @@ exports.register = async (req, res) => {
       });
     }
   } catch (error) {
-    console.log("THE REAL ERROR IS:", error); // <-- Add this line
+    console.log("THE REAL ERROR IS:", error); 
     res.status(500).json({ message: 'Server error during registration' });
   }
 };
 
-// 2. LOGIN LOGIC (Sign In)
 exports.login = async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    // Find the user by email
     const user = await User.findOne({ email });
 
-    // Check if user exists and password is correct
     if (user && (await user.comparePassword(password))) {
       res.json({
         _id: user._id,
@@ -61,7 +54,6 @@ exports.login = async (req, res) => {
   }
 };
 
-// 3. FORGOT PASSWORD LOGIC (Generates & Sends Email)
 exports.forgotPassword = async (req, res) => {
   try {
     const user = await User.findOne({ email: req.body.email });
@@ -69,27 +61,23 @@ exports.forgotPassword = async (req, res) => {
       return res.status(404).json({ message: "No user found with that email" });
     }
 
-    // Generate a random reset token
     const resetToken = crypto.randomBytes(20).toString('hex');
 
-    // Hash it and save it to the database (valid for 15 minutes)
     user.resetPasswordToken = crypto.createHash('sha256').update(resetToken).digest('hex');
     user.resetPasswordExpire = Date.now() + 15 * 60 * 1000;
     await user.save();
 
-    // Create the Reset URL for the frontend (Update to Vercel URL later!)
-    const resetUrl = `https://prabha-dairy.vercel.app/resetpassword/${resetToken}`; 
+    // 👉 FIXED: Added "-store" so it redirects to your actual frontend!
+    const resetUrl = `https://prabha-dairy-store.vercel.app/resetpassword/${resetToken}`; 
 
-    // Set up Nodemailer to send via Gmail
     const transporter = nodemailer.createTransport({
       service: 'Gmail',
       auth: {
-        user: process.env.EMAIL_USER, // Your Gmail address
-        pass: process.env.EMAIL_PASS, // Your Gmail App Password
+        user: process.env.EMAIL_USER, 
+        pass: process.env.EMAIL_PASS, 
       },
     });
 
-    // Send the email
     await transporter.sendMail({
       from: `"Prabha Dairy" <${process.env.EMAIL_USER}>`,
       to: user.email,
@@ -110,13 +98,10 @@ exports.forgotPassword = async (req, res) => {
   }
 };
 
-// 4. RESET PASSWORD LOGIC (Saves new password)
 exports.resetPassword = async (req, res) => {
   try {
-    // Hash the token from the URL to match what is in the DB
     const resetPasswordToken = crypto.createHash('sha256').update(req.params.token).digest('hex');
 
-    // Find the user with that exact token, ensuring it hasn't expired
     const user = await User.findOne({
       resetPasswordToken,
       resetPasswordExpire: { $gt: Date.now() }
@@ -126,7 +111,6 @@ exports.resetPassword = async (req, res) => {
       return res.status(400).json({ message: "Invalid or expired reset token" });
     }
 
-    // Set the new password and clear the reset fields
     user.password = req.body.password; 
     user.resetPasswordToken = undefined;
     user.resetPasswordExpire = undefined;
