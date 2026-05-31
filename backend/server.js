@@ -17,6 +17,8 @@ const postRoutes = require('./routes/postRoutes');
 
 // Initialize App
 const app = express();
+// Trust the Vercel reverse proxy so the rate limiter can see the real IP
+app.set('trust proxy', 1);
 
 // 1. --- GLOBAL SECURITY & MIDDLEWARES ---
 
