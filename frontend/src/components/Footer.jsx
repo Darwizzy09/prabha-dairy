@@ -27,6 +27,15 @@ const LinkedinIcon = ({ size = 20 }) => (
   </svg>
 );
 
+// 👉 NEW: Custom Amazon Icon to prevent lucide-react errors
+const AmazonIcon = ({ size = 20 }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M6 18c4.667 3.333 10.333 3.333 15 0" />
+    <path d="M21 16l1 2-2 1" />
+    <path d="M12 4c-3.5 0-6 2.5-6 6s2.5 6 6 6 6-2.5 6-6-2.5-6-6-6z" />
+  </svg>
+);
+
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
@@ -78,14 +87,26 @@ export default function Footer() {
                 <Store size={20} />
               </a>
 
+              {/* 👉 FIXED: Replaced EzySambhajinagar with Google Maps link */}
               <a
-                href="https://ezysambhajinagar.com/shops-services/prabha-dairy/"
+                href="https://www.google.com/maps/search/Prabha+Dairy+Chhatrapati+Sambhajinagar"
                 target="_blank"
                 rel="noreferrer"
                 className="w-10 h-10 bg-gray-50 text-gray-400 rounded-full flex items-center justify-center hover:bg-green-600 hover:text-white transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-1"
-                aria-label="EzySambhajinagar"
+                aria-label="Google Maps"
               >
                 <MapPin size={20} />
+              </a>
+
+              {/* 👉 NEW: Amazon Profile Link */}
+              <a
+                href="https://www.amazon.in/l/27943762031?ie=UTF8&marketplaceID=A21TJRUUN4KGV&product=B0H223HDR4&me=A2F79344ISI2HO"
+                target="_blank"
+                rel="noreferrer"
+                className="w-10 h-10 bg-gray-50 text-gray-400 rounded-full flex items-center justify-center hover:bg-[#FF9900] hover:text-white transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-1"
+                aria-label="Amazon"
+              >
+                <AmazonIcon size={20} />
               </a>
             </div>
           </div>
